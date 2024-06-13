@@ -1,0 +1,15 @@
+<!-- lista_ventas.html -->
+{% for venta in ventas %}
+    <p>Cliente: {{ venta.cliente.user.username }}</p>
+    <p>Producto: {{ venta.producto.nombre }}</p>
+    <p>Valor: ${{ venta.valor }}</p>
+    {% if venta.archivos_adjuntos %}
+        <p>Archivos adjuntos:</p>
+        <ul>
+            {% for archivo in venta.archivos_adjuntos %}
+                <li><a href="{{ archivo.url }}">{{ archivo.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <hr>
+{% endfor %}
