@@ -34,7 +34,7 @@ class Venta(models.Model):
 
 
 class ArchivoAdjunto(models.Model):
-    venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='archivos_adjuntos')
+    venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='archivos_adjuntos_relacionados')
     archivo = models.FileField(upload_to='archivos/')
 
     def __str__(self):

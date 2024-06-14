@@ -1,0 +1,5 @@
+{% load widget_tweaks %}
+<input type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
+{% if widget.is_initial %}
+    <a href="{{ widget.value.url }}">{{ widget.value }}</a>
+{% endif %}

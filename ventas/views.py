@@ -18,12 +18,15 @@ def crear_venta(request):
 
             # Redireccionamos a la vista de lista de ventas después de guardar
             return redirect('lista_ventas')
+        else:
+            # Si el formulario no es válido, renderizamos nuevamente el formulario con errores
+            return render(request, 'ventas/templates/crear_venta.html', {'form': form})
     else:
         # Si es una solicitud GET (primera vez que se carga el formulario),
         # creamos una instancia del formulario vacío
         form = VentaForm()
 
-    # Renderizamos la plantilla 'crear_venta.html' con el formulario apropiado
+    # Renderizamos la plantilla 'crear_venta.html' con el formulario vacío
     return render(request, 'ventas/crear_venta.html', {'form': form})
 
 def lista_ventas(request):
@@ -32,3 +35,11 @@ def lista_ventas(request):
 
     # Renderizamos la plantilla 'lista_ventas.html' con las ventas obtenidas
     return render(request, 'ventas/lista_ventas.html', {'ventas': ventas})
+
+
+
+from django.shortcuts import render
+
+def home(request):
+    # Lógica para la página de inicio si es necesaria
+    return render(request, 'crear_venta.html')
